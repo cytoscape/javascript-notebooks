@@ -21,8 +21,8 @@
 title: JavaScript Notebooks for Cytoscape
 tagline: Community contributed JS notebooks for Cytoscape Desktop automation.
 description: This collection of JS notebooks allows you to interact and control your local instance of Cytoscape Desktop.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://cytoscape.org/javascript-notebooks/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/javascript-notebooks" # the subpath of your site, e.g. /blog
+url: "https://cytoscape.org/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: cytoscape
 github_username:  cytoscape
 
