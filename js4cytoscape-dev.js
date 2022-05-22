@@ -24,7 +24,7 @@ async function cyBadge() {
     cybadgeVal.className = 'cybadgeval';
     if (cyrunning){
       cybadgeVal.style = 'background:#0078B9;';
-      cybadgeVal.innerHTML = 'running';
+      cybadgeVal.innerHTML = 'v' + cyversion["cytoscapeVersion"];
     } else {
       cybadgeVal.style = 'background:#CD5F46;';
       cybadgeVal.innerHTML = 'not running';
