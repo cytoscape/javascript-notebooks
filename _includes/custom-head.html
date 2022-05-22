@@ -1,11 +1,15 @@
 
-<!-- Added via _includes/custom-head.html -->
+<!-- START _includes/custom-head.html -->
+<script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<!-- Add js4cytoscape here-->
-<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/cytoscape/js4cytoscape/main/packages/js4cytoscape/style.css">
+<!-- js4cytoscape -->
+<link rel="stylesheet" href="{{ "/js4cytoscape-style.css" | relative_url }}">
+<script src="{{ "/js4cytoscape-dev.js" | relative_url }}"></script>
 <script src="https://unpkg.com/js4cytoscape/dist/main.js"></script>
 <script src="https://unpkg.com/cytoscape@3.6.0/dist/cytoscape.min.js"></script>
 <script type="text/javascript">
-    window.onload = checkCytoscape();
+    window.onload = cyBadge();
 </script>
+<!-- END _includes/custom-head.html -->

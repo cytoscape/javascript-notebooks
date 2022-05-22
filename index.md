@@ -5,7 +5,7 @@ layout: default
 <div class="home">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+  {%- endif -%} 
 
 <!-- content -->
 This collection of JS notebooks allows you to interact and control your
