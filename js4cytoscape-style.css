@@ -29,3 +29,10 @@
     border-top-right-radius: .17rem !important;
     border-bottom-right-radius: .17rem !important;
  }
+button {
+    background-color: #F7941E; /* cytoscape orange */
+    border-radius: 30px;
+    color: white;
+    font-size: medium;
+    padding: .75rem;
+}

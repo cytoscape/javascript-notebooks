@@ -28,7 +28,7 @@ twitter_username: cytoscape
 github_username:  cytoscape
 
 # Build settings
-incremental: true
+incremental: false # false to ensure rebuilding of index
 theme: minima
 plugins:
   - jekyll-feed

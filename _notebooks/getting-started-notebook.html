@@ -1,0 +1,88 @@
+---
+title:  "Getting started"
+categories: demo
+---
+<p>This is an example JS notebook for Cytoscape automation. This format supports common HTML and JS components, 
+    in addition to markdown and liquid syntax. For the majority of cases, we recommend a notebook style layout 
+    of alternating text (like this) and dynamic elements provided by js4cytoscape.
+</p>
+
+<h3>The Cytoscape Badge</h3>
+<p>For example, the Cytoscape badge is provided by a js4cytoscape:</p> 
+
+<span class="cytoscape-badge"></span>
+<br /><br />
+
+<p>This badge reports the status of your local instance of Cytoscape, displaying the version if it is successfully 
+    detected. We recommend adding this badge at the top of each of your notebooks. Just insert this single line of code!
+</p>
+
+{% highlight html %}
+<span class="cytoscape-badge"></span>
+{% endhighlight %}
+
+<h3>Single Function</h3>
+<p>Now, let's open a sample network and demo a few of the operations you can control Cytoscape from a JS notebook.</p>
+
+<button onclick="openSession()">Open sample session</button>
+<br /><br />
+
+<p>Did you see the session load in your local Cytoscape? This is a simple example of a single js4cytoscape function
+    associated with a button, like so:
+</p>
+
+{% highlight html %}
+<button onclick="openSession()">Open sample session</button>
+{% endhighlight %}
+
+<h3>Multiple Functions</h3>
+<p>You can also trigger an entire workflow with a single button click.</p>
+
+<button id="my-workflow">My workflow</button>
+<br /><br />
+
+<p>This can be accomplished by setting a button id and then defining a function triggered by its click:</p>
+
+{% highlight html %}
+<button id="my-workflow">My workflow</button>
+
+<script>
+    $('#my-workflow').click(function(){
+        closeSession(false);
+        openSession();
+        //whatever you want here
+    })
+</script>
+{% endhighlight %}
+
+<h3>Embed Snapshots</h3>
+<p>You can also take snapshots of your work and then embed them in the notebook.</p>
+
+<button id="show-my-work">Show my work</button>
+<div id="work-shown"></div>
+<br />
+
+<p>And here is what that code looks like:</p>
+
+{% highlight html %}
+<button id="show-my-work">Show my work</button>
+<div id="work-shown"></div>
+
+<script>
+    $('#show-my-work').click(function(){
+        //export image
+        //insert image at div $('#work-shown')
+    })
+</script>
+{% endhighlight %}
+
+<script>
+$('#my-workflow').click(function(){
+    closeSession(false);
+    openSession();
+})
+$('#show-my-work').click(function(){
+    //export image
+    //insert image at div $('#work-shown')
+})
+</script>
