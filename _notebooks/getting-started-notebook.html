@@ -21,7 +21,7 @@ categories: demo
 <span class="cytoscape-badge"></span>
 {% endhighlight %}
 
-<h3>Single Function</h3>
+<h3>Single Function Buttons</h3>
 <p>Now, let's open a sample network and demo a few of the operations you can control Cytoscape from a JS notebook.</p>
 
 <button onclick="openSession()">Open sample session</button>
@@ -75,6 +75,24 @@ categories: demo
     })
 </script>
 {% endhighlight %}
+
+
+<textarea readonly id="log" rows="30" cols="120"></textarea>
+<script type="text/javascript">
+    window.onload = (function () {
+      var old = console.log;
+      var logger = document.getElementById('log');
+      console.log = function () {
+        for (var i = 0; i < arguments.length; i++) {
+          if (typeof arguments[i] == 'object') {
+            logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '&#10';
+          } else {
+            logger.innerHTML += arguments[i] + '&#10';
+          }
+        }
+      }
+    })();
+</script>
 
 <script>
 $('#my-workflow').click(function(){
