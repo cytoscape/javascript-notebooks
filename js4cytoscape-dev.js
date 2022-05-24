@@ -6,6 +6,22 @@ let cybadgeElm;
 let cyversion;
 
 async function cyBadge(baseUrl = defaultBaseUrl) {
+if (inCybrowser){
+    console.log('cytoscape is running and CyBrowser detected');
+    cybadgeElm = document.getElementsByClassName('cytoscape-badge');
+    //just in case there is more than on badge on a page
+    for(let i = 0; i < cybadgeElm.length; i++) {
+        cybadgeKey = document.createElement('span');
+        cybadgeKey.className = 'cybadgekey';
+        cybadgeKey.innerHTML = 'cybrowser';
+        cybadgeVal = document.createElement('span');
+        cybadgeVal.className = 'cybadgeval';
+        cybadgeVal.style = 'background:#0078B9;';
+        cybadgeVal.innerHTML = 'detected';
+        cybadgeElm[i].appendChild(cybadgeKey);
+        cybadgeElm[i].appendChild(cybadgeVal);
+    }
+} else {
   cyrunning = false;
   try {
     cyversion = await cyrestGET('version');
@@ -33,6 +49,7 @@ async function cyBadge(baseUrl = defaultBaseUrl) {
     cybadgeElm[i].appendChild(cybadgeKey);
     cybadgeElm[i].appendChild(cybadgeVal);
   } 
+}
 }
 
 // ADD TO: Sessions.js
