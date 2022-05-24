@@ -37,18 +37,23 @@ async function cyBadge(baseUrl = defaultBaseUrl) {
 
 // ADD TO: Sessions.js
 async function openSession(fileLocation=null, baseUrl=defaultBaseUrl) {
-    let type = 'file'
+    let type = 'file';
     if(fileLocation === null){
         fileLocation = './sampleData/sessions/Yeast Perturbation.cys';
     } else if(fileLocation.startsWith('http')){
         type = 'url';
     } 
     let cmd = 'session open ' + type + '="' + fileLocation;
-    let res = commandsPOST(cmd, baseUrl=baseUrl);
-    console.log('Opening session file at '+fileLocation);
-    res.then((obj) => { console.log("openSession: completed") });
-    let resData = res.then((obj) => { return JSON.parse(obj)['data'] });
-    return resData;
+    if (inCybrowser){
+        cybrowser.executeCyCommand(cmd);
+        return null;
+    } else {
+        let res = commandsPOST(cmd, baseUrl=baseUrl);
+        console.log('Opening session file at '+fileLocation);
+        res.then((obj) => { console.log("openSession: completed") });
+        let resData = res.then((obj) => { return JSON.parse(obj)['data'] });
+        return resData;
+    }
 }
 async function closeSession(saveBeforeClosing, filename=null, baseUrl=defaultBaseUrl) {
     if(saveBeforeClosing) saveSession(filename, baseUrl);

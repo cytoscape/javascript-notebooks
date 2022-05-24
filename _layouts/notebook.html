@@ -8,8 +8,12 @@ layout: page
 </section>
 
 <div id="apps" list="{{page.apps}}"></div>
+
 <script>
+var inCybrowser = false;
+
 $(document).ready(async function(){
+    await cyBrowserCheck();
     await cyBadge();
     cyApps();
 });
@@ -24,4 +28,20 @@ function cyApps() {
         }
     }
 }
+
+function cyBrowserCheck() {
+    if(!window.navigator.userAgent.includes('CyBrowser')){
+		var divs = document.getElementsByClassName("cybrowser")
+		for (var i=0;i<divs.length;i++){
+			divs[i].style.display = "none";
+		}
+	} else {
+        inCybrowser = true;
+		var divs = document.getElementsByClassName("not-cybrowser")
+		for (var i=0;i<divs.length;i++){
+			divs[i].style.display = "none";
+		}
+	}
+}
+
 </script>

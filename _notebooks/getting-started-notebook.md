@@ -19,13 +19,13 @@ apps: stringApp, WikiPathways
 <span class="cytoscape-badge"></span>
 {% endhighlight %}
 
-<h3>Single Function Buttons</h3>
+<h3>Single Command Buttons</h3>
 <p>Now, let's open a sample network and demo a few of the operations you can control Cytoscape from a JS notebook.</p>
 
 <button onclick="openSession()">Open sample session</button>
 <br /><br />
 
-<p>Did you see the session load in your local Cytoscape? This is a simple example of a single js4cytoscape function
+<p>Did you see the session load in your local Cytoscape? This is a simple example of a single js4cytoscape commands
     associated with a button, like so:
 </p>
 
@@ -33,7 +33,7 @@ apps: stringApp, WikiPathways
 <button onclick="openSession()">Open sample session</button>
 {% endhighlight %}
 
-<h3>Multiple Functions</h3>
+<h3>Multiple Commands</h3>
 <p>You can also trigger an entire workflow with a single button click.</p>
 
 <button id="my-workflow">My workflow</button>
