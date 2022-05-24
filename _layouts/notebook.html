@@ -1,0 +1,27 @@
+---
+layout: page
+---
+<span class="cytoscape-badge"></span>
+<br /><br />
+<section>
+    {{ content }}
+</section>
+
+<div id="apps" list="{{page.apps}}"></div>
+<script>
+$(document).ready(async function(){
+    await cyBadge();
+    cyApps();
+});
+
+function cyApps() {
+    if (cyversion != null){
+        var appListDiv = $("#apps")[0];
+        var appList = appListDiv.getAttribute("list");
+        var appListItems = appList.split(/,\s*/);
+        for (let i in appListItems){
+            window.onload = console.log('TODO: Install apps: '+ appListItems[i]);
+        }
+    }
+}
+</script>

@@ -61,7 +61,7 @@ defaults:
       path: ""
       type: "notebooks"
     values:
-      layout: "page"
+      layout: "notebook"
   - scope:
       path: ""
     values:

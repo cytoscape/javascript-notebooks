@@ -1,6 +1,7 @@
 ---
-title:  "Getting started"
+title: Getting started
 categories: demo
+apps: stringApp, WikiPathways
 ---
 <p>This is an example JS notebook for Cytoscape automation. This format supports common HTML and JS components, 
     in addition to markdown and liquid syntax. For the majority of cases, we recommend a notebook style layout 
@@ -8,13 +9,10 @@ categories: demo
 </p>
 
 <h3>The Cytoscape Badge</h3>
-<p>For example, the Cytoscape badge is provided by a js4cytoscape:</p> 
-
-<span class="cytoscape-badge"></span>
-<br /><br />
-
-<p>This badge reports the status of your local instance of Cytoscape, displaying the version if it is successfully 
-    detected. We recommend adding this badge at the top of each of your notebooks. Just insert this single line of code!
+<p>For example, the Cytoscape badge displayed above is provided by js4cytoscape and automatically inserted by the 
+    notebook template defined by this site.
+    This badge reports the status of your local instance of Cytoscape, displaying the version if it is successfully 
+    detected. With the loaded js4cytoscape js and css, the badge is inserted with this single line of code:
 </p>
 
 {% highlight html %}
@@ -41,15 +39,17 @@ categories: demo
 <button id="my-workflow">My workflow</button>
 <br /><br />
 
-<p>This can be accomplished by setting a button id and then defining a function triggered by its click:</p>
+<p>This can be accomplished by setting a button id and then defining a function triggered by its click. 
+    The function can then perform a series of js4cytoscape commands or whatever you want. Just be
+    sure to use async/await to execute and complete commands in series:</p>
 
 {% highlight html %}
 <button id="my-workflow">My workflow</button>
 
 <script>
-    $('#my-workflow').click(function(){
-        closeSession(false);
-        openSession();
+    $('#my-workflow').click(async function(){
+        await closeSession(false);
+        await openSession();
         //whatever you want here
     })
 </script>
@@ -77,8 +77,8 @@ categories: demo
 {% endhighlight %}
 
 <script>
-$('#my-workflow').click(function(){
-    closeSession(false);
+$('#my-workflow').click(async function(){
+    await closeSession(false);
     openSession();
 })
 $('#show-my-work').click(function(){
