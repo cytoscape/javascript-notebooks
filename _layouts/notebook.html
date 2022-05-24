@@ -10,7 +10,7 @@ layout: page
 <div id="apps" list="{{page.apps}}"></div>
 
 <script>
-var inCybrowser = false;
+var inCyBrowser = false;
 
 $(document).ready(async function(){
     await cyBrowserCheck();
@@ -36,7 +36,7 @@ function cyBrowserCheck() {
 			divs[i].style.display = "none";
 		}
 	} else {
-        inCybrowser = true;
+        inCyBrowser = true;
 		var divs = document.getElementsByClassName("not-cybrowser")
 		for (var i=0;i<divs.length;i++){
 			divs[i].style.display = "none";

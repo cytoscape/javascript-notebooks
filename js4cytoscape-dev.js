@@ -6,7 +6,7 @@ let cybadgeElm;
 let cyversion;
 
 async function cyBadge(baseUrl = defaultBaseUrl) {
-if (inCybrowser){
+if (inCyBrowser){
     console.log('cytoscape is running and CyBrowser detected');
     cybadgeElm = document.getElementsByClassName('cytoscape-badge');
     //just in case there is more than on badge on a page
@@ -61,7 +61,7 @@ async function openSession(fileLocation=null, baseUrl=defaultBaseUrl) {
         type = 'url';
     } 
     let cmd = 'session open ' + type + '="' + fileLocation;
-    if (inCybrowser){
+    if (inCyBrowser){
         cybrowser.executeCyCommand(cmd);
         return null;
     } else {
@@ -75,24 +75,39 @@ async function openSession(fileLocation=null, baseUrl=defaultBaseUrl) {
 async function closeSession(saveBeforeClosing, filename=null, baseUrl=defaultBaseUrl) {
     if(saveBeforeClosing) saveSession(filename, baseUrl);
     let cmd = 'session new';
-    let res = commandsPOST(cmd, baseUrl=baseUrl);
-    console.log('Closing session');
-    res.then((obj) => { console.log("closeSession: completed") });
-    let resData = res.then((obj) => { return JSON.parse(obj)['data'] });
-    return resData;
+    if (inCyBrowser){
+        cybrowser.executeCyCommand(cmd);
+        return null;
+    } else {
+        let res = commandsPOST(cmd, baseUrl=baseUrl);
+        console.log('Closing session');
+        res.then((obj) => { console.log("closeSession: completed") });
+        let resData = res.then((obj) => { return JSON.parse(obj)['data'] });
+        return resData;
+    }
 }
 async function saveSession(filename=null, baseUrl=defaultBaseUrl) {
     if (filename === null){
-        filename <- cyrestGET('session/name', baseUrl=baseUrl);
+        if (!inCyBrowser){ //use cyrest (if not in CyBrowser) to check name first
+            filename = cyrestGET('session/name', baseUrl=baseUrl);
+        }
         if(filename=="") alert('Save not completed. Provide a filename the first time you save a session.');
-        let res = commandsPOST('session save', baseUrl=baseUrl);
-        console.log('Saving session file at '+filename);
-        res.then((obj) => { console.log("saveSession: completed") });
+        if (inCyBrowser){
+            let res = cybrowser.executeCyCommand('session save');
+        } else {
+            let res = commandsPOST('session save', baseUrl=baseUrl);
+            console.log('Saving session file at '+filename);
+            res.then((obj) => { console.log("saveSession: completed") });
+        }
     } else {
         let cmd = 'session save as file=' + filename + '"';
-        let res = commandsPOST(cmd, baseUrl=baseUrl);
-        console.log('Saving session file at '+filename);
-        res.then((obj) => { console.log("saveSession: completed") });
+        if (inCyBrowser){
+            let res = cybrowser.executeCyCommand(cmd);
+        } else {
+            let res = commandsPOST(cmd, baseUrl=baseUrl);
+            console.log('Saving session file at '+filename);
+            res.then((obj) => { console.log("saveSession: completed") });
+        }
     }
     return res;
 }
