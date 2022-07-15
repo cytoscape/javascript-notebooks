@@ -1,6 +1,8 @@
 # javascript-notebooks
 A Jekyll site for publishing JS notebooks for Cytoscape automation via js4cytoscape
 
+https://cytoscape.org/javascript-notebooks/
+
 
 ## Development
 In order to rebuild the site locally, e.g. for testing, you'll need to:
