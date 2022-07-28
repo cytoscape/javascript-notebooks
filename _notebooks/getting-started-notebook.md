@@ -92,3 +92,21 @@ $('#show-my-work').click(function(){
     //insert image at div $('#work-shown')
 })
 </script>
+
+<!-- Adding console view for debugging -->
+<textarea readonly id="log" rows="30" cols="120"></textarea>
+<script type="text/javascript">
+        window.onload = (function () {
+          var old = console.log;
+          var logger = document.getElementById('log');
+          console.log = function () {
+            for (var i = 0; i < arguments.length; i++) {
+              if (typeof arguments[i] == 'object') {
+                logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '&#10';
+              } else {
+                logger.innerHTML += arguments[i] + '&#10';
+              }
+            }
+          }
+        })();
+    </script>
