@@ -55,6 +55,12 @@ apps: stringApp, WikiPathways
 </script>
 {% endhighlight %}
 
+<h3>List Installed Apps</h3>
+
+<button onclick="getInstalledApps()">Installed apps</button>
+<br /><br />
+
+
 <h3>Embed Snapshots</h3>
 <p>You can also take snapshots of your work and then embed them in the notebook.</p>
 
