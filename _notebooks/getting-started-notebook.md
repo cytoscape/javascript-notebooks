@@ -94,6 +94,7 @@ $('#show-my-work').click(function(){
 </script>
 
 <!-- Adding console view for debugging -->
+<h3>Debugging console</h3>
 <textarea readonly id="log" rows="30" cols="120"></textarea>
 <script type="text/javascript">
         window.onload = (function () {
@@ -109,4 +110,4 @@ $('#show-my-work').click(function(){
             }
           }
         })();
-    </script>
+</script>
